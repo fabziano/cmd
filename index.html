@@ -10,12 +10,12 @@
     html,body{background-color:#000;color:#ccc;font-family:Consolas,"Courier New",monospace;font-size:15px;line-height:1.2;width:100%;height:100%;overflow:hidden}
     @media (max-width:768px){html,body{font-size:18px}}
     main{width:100%;height:100%;padding:8px;overflow-y:auto;cursor:text}
-    p{margin:0;white-space:pre;word-break:break-all}
+    p{white-space:pre;word-break:break-all}
     .prompt-user, .prompt-char { color: #8ae234}
     .prompt-path, .dir { color: #729fcf} 
     .prompt-sep { color: #ccc}  
     form{display:flex;align-items:center}
-    input{background:0 0;border:none;color:#ccc;font-family:inherit;font-size:inherit;line-height:inherit;outline:0;flex:1;padding:0;margin:0;margin-left:8px;}
+    input{background:0 0;border:none;color:#ccc;font-family:inherit;font-size:inherit;line-height:inherit;outline:0;flex:1}
   </style>
 </head>
 <body>
@@ -59,7 +59,7 @@
     }
 
     function atualizarPromptNaTela() {
-      elementoRotuloPrompt.innerHTML = obterHtmlPrompt();
+      elementoRotuloPrompt.innerHTML = `${obterHtmlPrompt()}&nbsp;`;
     }
 
     function obterDiretorioAtual() {
@@ -277,7 +277,7 @@
       const comandoDigitado = elementoEntradaComando.value;
       const promptAtual = obterHtmlPrompt();
 
-      adicionarLinhaSaida(`${promptAtual} ${comandoDigitado}`, true);
+      adicionarLinhaSaida(`${promptAtual}&nbsp;${comandoDigitado}`, true);
 
       if (comandoDigitado.trim()) {
         historicoComandos.push(comandoDigitado);
