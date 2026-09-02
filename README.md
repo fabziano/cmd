@@ -1,7 +1,9 @@
 ### Bash
 
-- Essa nova versão não usa bibliotecas externas. 
-- A criação de arquivo/pasta não permanece após atualizar a página.
+- Essa nova versão não usa bibliotecas externas; 
+- É apenas html, css e js vanilla;
+- É possível rodar o arquivo index.html direto no navegador sem um servidor web;
+- A criação de arquivos/pastas não permanece após atualizar a página.
 
 ### Comandos disponíveis 
 
