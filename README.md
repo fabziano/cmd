@@ -2,7 +2,7 @@
 
 - Essa nova versão não usa bibliotecas externas; 
 - É apenas html, css e js vanilla;
-- É possível rodar o arquivo index.html direto no navegador sem um servidor web;
+- É possível executar o arquivo index.html direto no navegador;
 - A criação de arquivos/pastas não permanece após atualizar a página.
 
 ### Comandos disponíveis 
