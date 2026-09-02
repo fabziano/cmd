@@ -1,0 +1,10 @@
+services:
+  terminal:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: terminal-horas:1.0.0
+    container_name: terminal-horas
+    ports:
+      - "8080:80"
+    restart: unless-stopped
