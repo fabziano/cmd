@@ -1,6 +1,6 @@
 ### Consultar Horas
 
-- **Acesse:** [https://fabziano.github.io/](LINK)
+- **Acesse:** [https://fabziano.github.io/cmd/](https://fabziano.github.io/cmd/)
 
 - **Digite:** `ra SEU_RA`
 
