@@ -12,13 +12,13 @@
 ### Comandos disponíveis 
 
 ```    
-    ls                     Lista os arquivos do diretório atual
-    pwd                    Exibe o caminho do diretório atual
-    cd <dir>               Navega entre diretórios
-    cat <arquivo>          Exibe o conteúdo de um arquivo
-    echo <texto> > <arq>   Sobrescreve/cria o conteúdo de um arquivo
-    mkdir <nome>           Cria um novo diretório
-    touch <nome>           Cria um novo arquivo vazio',
-    clear                  Limpa a tela
-    date                   Exibe a data e hora atual
+  ls                     Lista os arquivos do diretório atual
+  pwd                    Exibe o caminho do diretório atual
+  cd <dir>               Navega entre diretórios
+  cat <arquivo>          Exibe o conteúdo de um arquivo
+  echo <texto> > <arq>   Sobrescreve/cria o conteúdo de um arquivo
+  mkdir <nome>           Cria um novo diretório
+  touch <nome>           Cria um novo arquivo vazio
+  clear                  Limpa a tela
+  date                   Exibe a data e hora atual
 ```  
