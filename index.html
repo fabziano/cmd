@@ -13,7 +13,7 @@
     p{white-space:pre;word-break:break-all}
     .prompt-user, .prompt-char { color: #8ae234}
     .prompt-path, .dir { color: #729fcf} 
-    .prompt-sep { color: #ccc}  
+    .prompt-sep, a{ color: #ccc}  
     form{display:flex;align-items:center}
     input{background:0 0;border:none;color:#ccc;font-family:inherit;font-size:inherit;line-height:inherit;outline:0;flex:1}
   </style>
@@ -43,7 +43,7 @@
         'documentos': { 
           tipo: 'diretorio', 
           conteudo: { 
-            'thanos.txt': { tipo: 'arquivo', conteudo: '— Perfeitamente equilibrado, como todas as coisas devem ser — disse Thanos após usar Round Robin.' } 
+            'thanos.txt': { tipo: 'arquivo', conteudo: '<a href="https://fabziano.github.io/p/audio/">www.loadbalancer.com</a>' } 
           } 
         },
         'projetos': { tipo: 'diretorio', conteudo: {} },
@@ -208,6 +208,7 @@
             const { diretorioAlvo, nomeArquivo } = resolverCaminhoEArquivo(caminhoCat);
             if (diretorioAlvo && diretorioAlvo[nomeArquivo] && diretorioAlvo[nomeArquivo].tipo === 'arquivo') {
               resposta = diretorioAlvo[nomeArquivo].conteudo || '\n';
+              respostaComHtml = true;
             } else {
               resposta = `cat: ${caminhoCat}: Arquivo não encontrado`;
             }
@@ -215,11 +216,17 @@
           break;
 
         case 'echo':
-          const indiceRedirecionamento = argumentos.indexOf('>');
+          const indiceRedirecionamento = linhaDigitation.indexOf('>');
           
           if (indiceRedirecionamento !== -1) {
-            const textoParaGravar = argumentos.slice(0, indiceRedirecionamento).join(' ').replace(/^["']|["']$/g, '');
-            const caminhoDestino = argumentos[indiceRedirecionamento + 1];
+            let textoParaGravar = linhaDigitation.substring(4, indiceRedirecionamento).trim();
+            
+            if ((textoParaGravar.startsWith('"') && textoParaGravar.endsWith('"')) ||
+                (textoParaGravar.startsWith("'") && textoParaGravar.endsWith("'"))) {
+              textoParaGravar = textoParaGravar.slice(1, -1);
+            }
+
+            const caminhoDestino = linhaDigitation.substring(indiceRedirecionamento + 1).trim();
 
             if (!caminhoDestino) {
               resposta = 'bash: erro de sintaxe próximo ao token inesperado \'newline\'';
@@ -231,6 +238,8 @@
                 diretorioAlvo[nomeArquivo] = { tipo: 'arquivo', conteudo: textoParaGravar };
               }
             }
+          } else {
+            resposta = linhaDigitation.substring(4).trim();
           }
           break;
 
