@@ -137,6 +137,7 @@
             '  echo <texto> > <arq>   Sobrescreve/cria o conteúdo de um arquivo',
             '  mkdir <nome>           Cria um novo diretório',
             '  touch <nome>           Cria um novo arquivo vazio',
+            '  rm [-r] <alvo>         Remove arquivos ou diretórios (-r para pastas)',
             '  clear                  Limpa a tela',
             '  date                   Exibe a data e hora atual'
           ].join('\n');
@@ -251,6 +252,27 @@
             if (diretorioAlvo && !diretorioAlvo[nomeArquivo]) {
               diretorioAlvo[nomeArquivo] = { tipo: 'arquivo', conteudo: '' };
             }
+          }
+          break;
+
+        case 'rm':
+          const possuiOpcaoR = argumentos.includes('-r') || argumentos.includes('-rf') || argumentos.includes('-fr');
+          const argumentosSemOpcoes = argumentos.filter(arg => !arg.startsWith('-'));
+          const caminhoAlvo = argumentosSemOpcoes[0];
+
+          if (!caminhoAlvo) {
+            resposta = 'rm: falta um argumento';
+            break;
+          }
+
+          const { diretorioAlvo, nomeArquivo } = resolverCaminhoEArquivo(caminhoAlvo);
+
+          if (!diretorioAlvo || !diretorioAlvo[nomeArquivo]) {
+            resposta = `rm: não foi possível remover '${caminhoAlvo}': Arquivo ou diretório não encontrado`;
+          } else if (diretorioAlvo[nomeArquivo].tipo === 'diretorio' && !possuiOpcaoR) {
+            resposta = `rm: não foi possível remover '${caminhoAlvo}': É um diretório`;
+          } else {
+            delete diretorioAlvo[nomeArquivo];
           }
           break;
 
